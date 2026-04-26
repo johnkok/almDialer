@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-#include <SPIFFS.h>
+#include <LittleFS.h>
 #include <ArduinoJson.h>
 #include "config.h"
 #include "wifi_ap.h"
@@ -15,11 +15,11 @@ void setup() {
     
     Serial.println("\n\nESP8266 Email Alert System Starting...");
     
-    if (!SPIFFS.begin()) {
-        Serial.println("SPIFFS Mount Failed");
+    if (!LittleFS.begin()) {
+        Serial.println("LittleFS Mount Failed");
         return;
     }
-    Serial.println("SPIFFS Mounted");
+    Serial.println("LittleFS Mounted");
     
     Config::load();
     WiFiAP::setup();
